@@ -7,48 +7,53 @@
 
 import UIKit
 
-
-class Conversa {
-    let nomeDaPessoa : String
-    let ultimaMensagem : String
+class Chat: Decodable {
     
-    init(nomeDaPessoa: String, ultimaMensagem: String){
-        self.nomeDaPessoa = nomeDaPessoa
-        self.ultimaMensagem = ultimaMensagem
+    let profileImage: URL
+    let name: String
+    let lastMessage: String
+    let hasVisualized: Bool
+    let lastMessageDate: String
+    let profile: URL
+    
+    enum CodinKeys: String, CodingKey {
+        case profileImage = "imagemPerfil"
+        case name = "nome"
+        case lastMessage = "ultimaMensagem"
+        case hasVisualized = "foiVisualizado"
+        case lastMessageDate = "dataUltimaMensagem"
+        case profile = "perfil"
     }
-    
 }
+
+
 
 class ViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var conversas: [Conversa] = []
+    var chats: [Chat] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         
-        let conversa1 = Conversa(nomeDaPessoa: "Kogah", ultimaMensagem: "Testando o App")
-        let conversa2 = Conversa(nomeDaPessoa: "Helio", ultimaMensagem: "Vai dar bom")
-        let conversa3 = Conversa(nomeDaPessoa: "Zampo", ultimaMensagem: "Deu pau o PJ")
-        let conversa4 = Conversa(nomeDaPessoa: "Vivi", ultimaMensagem: "Bom dia time")
-        let conversa5 = Conversa(nomeDaPessoa: "Natan", ultimaMensagem: "Não entendi")
-        let conversa6 = Conversa(nomeDaPessoa: "Fernandão", ultimaMensagem: "Bora fazer")
-        let conversa7 = Conversa(nomeDaPessoa: "Timem Implmentação", ultimaMensagem: "Não vai dar pra subir")
-        let conversa8 = Conversa(nomeDaPessoa: "GSI", ultimaMensagem: "Temos um incidente para vocês")
-        let conversa9 = Conversa(nomeDaPessoa: "Caio", ultimaMensagem: "E o Firebase? ")
+        let url = URL(string: "https://us-central1-whatslol-1460f.cloudfunctions.net/chat")!
+        let urlRequest = URLRequest(url: url)
         
-        conversas.append(conversa1)
-        conversas.append(conversa2)
-        conversas.append(conversa3)
-        conversas.append(conversa4)
-        conversas.append(conversa5)
-        conversas.append(conversa6)
-        conversas.append(conversa7)
-        conversas.append(conversa8)
-        conversas.append(conversa9)
-    
+            URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            
+                do {
+                    let decodeObject = try JSONDecoder().decode([Chat].self, from: data ?? Data())
+                    self.chats = decodeObject
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                } catch {
+                    print(error)
+                }
+                
+            }.resume()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -56,13 +61,18 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return conversas.count
+        return chats.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "whatsappCell", for: indexPath) as! WhatsAppCellTableViewCell
-        cell.titleLabel.text = conversas[indexPath.row].nomeDaPessoa
-        cell.subtitleLabel.text = conversas[indexPath.row].ultimaMensagem
+        let chat = chats[indexPath.row]
+        cell.titleLabel.text = chat.name
+        cell.subtitleLabel.text = chat.lastMessage
+        if #available(iOS 15.0, *) {
+            cell.dateLabel.text = chat.lastMessageDate
+        }
+        cell.bulletView.isHidden = !chat.hasVisualized
         return cell
     }
 
