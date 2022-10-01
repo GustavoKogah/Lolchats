@@ -29,16 +29,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8ax-s1-jtK">
-                                                    <rect key="frame" x="70" y="15" width="54" height="58"/>
+                                                    <rect key="frame" x="70" y="15" width="224" height="58"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kd5-4b-uOA">
-                                                            <rect key="frame" x="0.0" y="0.0" width="54" height="29.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="224" height="29.5"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ea2-gZ-f7K">
-                                                            <rect key="frame" x="0.0" y="37.5" width="54" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="37.5" width="224" height="20.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20.5" id="cC1-t4-CO1"/>
                                                             </constraints>
@@ -48,7 +48,7 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meninao" translatesAutoresizingMaskIntoConstraints="NO" id="O4u-Dt-NVm">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O4u-Dt-NVm">
                                                     <rect key="frame" x="10" y="15" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="3mO-o7-DgP"/>
@@ -80,6 +80,7 @@
                                                 <constraint firstItem="8ax-s1-jtK" firstAttribute="top" secondItem="r6C-oW-3be" secondAttribute="top" constant="15" id="OVo-YH-wPI"/>
                                                 <constraint firstItem="Nrz-bA-VLw" firstAttribute="top" secondItem="r6C-oW-3be" secondAttribute="top" constant="15" id="QW6-og-ibx"/>
                                                 <constraint firstAttribute="trailing" secondItem="Nrz-bA-VLw" secondAttribute="trailing" constant="10" id="THk-yb-c2g"/>
+                                                <constraint firstItem="Nrz-bA-VLw" firstAttribute="leading" secondItem="8ax-s1-jtK" secondAttribute="trailing" constant="10" id="anu-Qo-wQp"/>
                                                 <constraint firstItem="O4u-Dt-NVm" firstAttribute="top" secondItem="r6C-oW-3be" secondAttribute="top" constant="15" id="c9c-hj-YmJ"/>
                                                 <constraint firstItem="8ax-s1-jtK" firstAttribute="leading" secondItem="O4u-Dt-NVm" secondAttribute="trailing" constant="10" id="fvA-aQ-92O"/>
                                                 <constraint firstItem="O4u-Dt-NVm" firstAttribute="leading" secondItem="r6C-oW-3be" secondAttribute="leading" constant="10" id="iXS-Gy-OkU"/>
@@ -134,7 +135,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="meninao" width="640" height="640"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

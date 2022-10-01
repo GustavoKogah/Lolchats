@@ -16,7 +16,7 @@ class Chat: Decodable {
     let lastMessageDate: String
     let profile: URL
     
-    enum CodinKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case profileImage = "imagemPerfil"
         case name = "nome"
         case lastMessage = "ultimaMensagem"
@@ -67,12 +67,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "whatsappCell", for: indexPath) as! WhatsAppCellTableViewCell
         let chat = chats[indexPath.row]
-        cell.titleLabel.text = chat.name
-        cell.subtitleLabel.text = chat.lastMessage
-        if #available(iOS 15.0, *) {
-            cell.dateLabel.text = chat.lastMessageDate
-        }
-        cell.bulletView.isHidden = !chat.hasVisualized
+        cell.setValues(chat: chat)
         return cell
     }
 
