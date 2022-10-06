@@ -14,6 +14,8 @@
 		A34F42B528E48D43008009F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A34F42B428E48D43008009F9 /* Assets.xcassets */; };
 		A34F42B828E48D43008009F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A34F42B628E48D43008009F9 /* LaunchScreen.storyboard */; };
 		A34F42C228E491C5008009F9 /* WhatsAppCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34F42C128E491C5008009F9 /* WhatsAppCellTableViewCell.swift */; };
+		A35B0EFB28EE8332000AD28E /* ConversationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35B0EFA28EE8332000AD28E /* ConversationTableViewController.swift */; };
+		A35B0EFD28EE8A97000AD28E /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35B0EFC28EE8A97000AD28E /* MessageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		A34F42B728E48D43008009F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A34F42B928E48D43008009F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A34F42C128E491C5008009F9 /* WhatsAppCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsAppCellTableViewCell.swift; sourceTree = "<group>"; };
+		A35B0EFA28EE8332000AD28E /* ConversationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewController.swift; sourceTree = "<group>"; };
+		A35B0EFC28EE8A97000AD28E /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		ABFE0947226285D614C99B36 /* Pods-fastLearning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fastLearning.debug.xcconfig"; path = "Target Support Files/Pods-fastLearning/Pods-fastLearning.debug.xcconfig"; sourceTree = "<group>"; };
 		CE3086581B2D135CC18870AC /* Pods_fastLearning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fastLearning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -74,10 +78,12 @@
 				A34F42AB28E48D42008009F9 /* AppDelegate.swift */,
 				A34F42AF28E48D42008009F9 /* ViewController.swift */,
 				A34F42B128E48D42008009F9 /* Main.storyboard */,
+				A35B0EFC28EE8A97000AD28E /* MessageTableViewCell.swift */,
 				A34F42B428E48D43008009F9 /* Assets.xcassets */,
 				A34F42B628E48D43008009F9 /* LaunchScreen.storyboard */,
 				A34F42B928E48D43008009F9 /* Info.plist */,
 				A34F42C128E491C5008009F9 /* WhatsAppCellTableViewCell.swift */,
+				A35B0EFA28EE8332000AD28E /* ConversationTableViewController.swift */,
 			);
 			path = fastLearning;
 			sourceTree = "<group>";
@@ -88,7 +94,6 @@
 				ABFE0947226285D614C99B36 /* Pods-fastLearning.debug.xcconfig */,
 				23872D3ABFA5597091B7E3C3 /* Pods-fastLearning.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -209,6 +214,8 @@
 			files = (
 				A34F42B028E48D42008009F9 /* ViewController.swift in Sources */,
 				A34F42C228E491C5008009F9 /* WhatsAppCellTableViewCell.swift in Sources */,
+				A35B0EFB28EE8332000AD28E /* ConversationTableViewController.swift in Sources */,
+				A35B0EFD28EE8A97000AD28E /* MessageTableViewCell.swift in Sources */,
 				A34F42AC28E48D42008009F9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

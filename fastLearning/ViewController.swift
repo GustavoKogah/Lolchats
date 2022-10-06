@@ -28,7 +28,7 @@ class Chat: Decodable {
 
 
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -37,6 +37,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
         
         let url = URL(string: "https://us-central1-whatslol-1460f.cloudfunctions.net/chat")!
         let urlRequest = URLRequest(url: url)
@@ -69,6 +70,20 @@ class ViewController: UIViewController, UITableViewDataSource {
         let chat = chats[indexPath.row]
         cell.setValues(chat: chat)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let chat = chats[indexPath.row]
+        performSegue(withIdentifier: "showChat", sender: chat)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showChat" {
+            guard let chat = sender as? Chat, let viewController = segue.destination as? ConversationTableViewController else {
+                return
+            }
+            viewController.chat = chat
+        }
     }
 
 }
