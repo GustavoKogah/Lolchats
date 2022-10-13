@@ -26,8 +26,12 @@ class ConversationTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = .lightGray
+        
+        
         guard let name = chat?.name else{ return }
+        self.title = name
+        
         let url = URL(string: "https://us-central1-whatslol-1460f.cloudfunctions.net/\(name.lowercased())")!
         let urlRequest = URLRequest(url: url)
         
@@ -58,16 +62,20 @@ class ConversationTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MessageTableViewCell else {
-            return UITableViewCell()
-        }
         let message = messages[indexPath.row]
-        cell.messageLabel.text = message.message
         if message.itsMe {
-            cell.messageLabel.textAlignment = .right
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "leftCell", for: indexPath) as? MessageTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.messageLabel.text = message.message
+            return cell
         } else {
-            cell.messageLabel.textAlignment = .left
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "rightCell", for: indexPath) as? MessageTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.messageLabel.text = message.message
+            return cell
         }
-        return cell
     }
+    
 }
