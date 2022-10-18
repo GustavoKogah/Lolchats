@@ -6,5 +6,5 @@ target 'fastLearning' do
   use_frameworks!
 
   # Pods for fastLearning
-  pod 'Kingfisher', '~> 6.3.1'
+  pod 'Kingfisher', '6.3.1'
 end
