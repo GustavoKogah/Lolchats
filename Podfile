@@ -7,4 +7,5 @@ target 'Lolchats' do
 
   # Pods for fastLearning
   pod 'Kingfisher', '6.3.1'
+  pod 'FirebaseAnalytics'
 end
