@@ -1,1 +1,1 @@
-# Lolchats
+Aulas de desenvolvimento iOS do básico ao avançado - Criando API e MVVM

@@ -1,0 +1,32 @@
+name: Lolchats
+
+options:
+  postGenCommand: pod install --repo-update
+  indentWidth: 4
+  tabWidth: 4
+  xcodeVersion: 0800
+
+config:
+  debug: debug
+  release: release
+
+settings:
+  base:
+    IPHONEOS_DEPLOYMENT_TARGET: 13
+
+targets:
+  
+  Lolchats:
+    type: application
+    platform: iOS
+
+    sources:
+      - path: Lolchats/
+
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: 1
+        DISPLAYNAME: Lolchats
+        INFOPLIST_FILE: Lolchats/Resources/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.luis.lolchats
+  
