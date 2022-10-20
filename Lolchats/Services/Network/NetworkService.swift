@@ -19,9 +19,9 @@ class NetworkService {
             URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             
                 do {
-                    let decodeObject = try JSONDecoder().decode([MessageResponse].self, from: data ?? Data())
+                    let decodeObject = try JSONDecoder().decode(X.self, from: data ?? Data())
                     DispatchQueue.main.async {
-                        onSuccess(decodeObject as! X)
+                        onSuccess(decodeObject)
                     }
                 } catch {
                     onFailure(error)

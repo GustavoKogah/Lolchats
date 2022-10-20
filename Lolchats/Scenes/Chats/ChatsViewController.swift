@@ -19,25 +19,14 @@ class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
         
-        
-        
         let url = URL(string: "https://us-central1-whatslol-1460f.cloudfunctions.net/chat")!
-        
-        let urlRequest = URLRequest(url: url)
-        
-            URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            
-                do {
-                    let decodeObject = try JSONDecoder().decode([ChatResponse].self, from: data ?? Data())
-                    self.chats = decodeObject
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                } catch {
-                    print(error)
-                }
-                
-            }.resume()
+        NetworkService.performRequest(url: url, responseModel: [ChatResponse].self) {
+            response in
+            self.chats = response
+            self.tableView.reloadData()
+        } onFailure: { _ in
+                self.tableView.reloadData()
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
