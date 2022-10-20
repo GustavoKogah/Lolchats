@@ -7,45 +7,28 @@
 
 import UIKit
 
-class Chat: Decodable {
-    
-    let profileImage: URL
-    let name: String
-    let lastMessage: String
-    let hasVisualized: Bool
-    let lastMessageDate: String
-    let profile: URL
-    
-    enum CodingKeys: String, CodingKey {
-        case profileImage = "imagemPerfil"
-        case name = "nome"
-        case lastMessage = "ultimaMensagem"
-        case hasVisualized = "foiVisualizado"
-        case lastMessageDate = "dataUltimaMensagem"
-        case profile = "perfil"
-    }
-}
 
-
-
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var chats: [Chat] = []
+    var chats: [ChatResponse] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
         
+        
+        
         let url = URL(string: "https://us-central1-whatslol-1460f.cloudfunctions.net/chat")!
+        
         let urlRequest = URLRequest(url: url)
         
             URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             
                 do {
-                    let decodeObject = try JSONDecoder().decode([Chat].self, from: data ?? Data())
+                    let decodeObject = try JSONDecoder().decode([ChatResponse].self, from: data ?? Data())
                     self.chats = decodeObject
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
@@ -66,7 +49,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "whatsappCell", for: indexPath) as! WhatsAppCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "whatsappCell", for: indexPath) as! ChatTableViewCell
         let chat = chats[indexPath.row]
         cell.setValues(chat: chat)
         return cell
@@ -79,7 +62,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showChat" {
-            guard let chat = sender as? Chat, let viewController = segue.destination as? ConversationTableViewController else {
+            guard let chat = sender as? ChatResponse, let viewController = segue.destination as? ConversationViewController else {
                 return
             }
             viewController.chat = chat
